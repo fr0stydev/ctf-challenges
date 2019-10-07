@@ -1,17 +1,17 @@
 html
     head
-        title Signup for hacked.com
+        title Login to hacked.com
         link(
             rel="stylesheet" 
             href="css/materialize.css")
     body    
         h1 Login
-        form(action='/login', method='POST')
             p 
-                |   Username:
-                input(type='text', id='username', name='username', value='')
-                |    Password:
-                input(type='password', id='password', name='password', value='')
-                |   Invitation Token:
-                input(type='text', 'id='token', name='token', value='')
-        input(class="btn waves-effect waves-light" value="Submit" onclick='singup()' type="submit")     
+            |   Username:
+            input(type='text', id='username', name='username', value='')
+            |    Password:
+            input(type='password', id='password', name='password', value='')
+            |   Invitation Token:
+            input(type='text', id='token', name='token', value='')
+        input(class="btn waves-effect waves-light" value="Submit" onclick='signup()' type="button")
+        script(src='js/signup.js')

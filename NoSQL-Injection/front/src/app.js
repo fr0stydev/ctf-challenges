@@ -25,6 +25,16 @@ app.get('/signup', (req, res) => {
     res.render('signup');
 })
 
+
+app.post('/authentication', (req, res)=> {
+    
+    const body = req.body
+    console.log(body)
+    axios.post('http://localhost:5000/authentication', body)
+    .then(function(response){
+        console.log(response.body)
+    })
+})
 app.listen(3030, ()=>{
     console.log('App listening on port 3030');
 });
