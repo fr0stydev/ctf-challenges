@@ -6,12 +6,13 @@ html
             href="css/materialize.css")
     body    
         h1 Login
+        form(action='/authentication', method="POST")
             p 
-            |   Username:
-            input(type='text', id='username', name='username', value='')
-            |    Password:
-            input(type='password', id='password', name='password', value='')
-            |   Invitation Token:
-            input(type='text', id='token', name='token', value='')
-        input(class="btn waves-effect waves-light" value="Submit" onclick='signup()' type="button")
+                |   Username:
+                input(type='text', id='username', name='username', value='')
+                |    Password:
+                input(type='password', id='password', name='password', value='')
+                |   Invitation Token:
+                input(type='text', id='token', name='token', value='')
+            input(class="btn waves-effect waves-light" value="Submit" onclick='signup()' type="button")
         script(src='js/signup.js')

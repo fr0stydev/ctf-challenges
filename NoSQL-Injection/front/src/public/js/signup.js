@@ -2,7 +2,7 @@ function signup(){
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const token = document.getElementById('token').value;
-    const query = '{'+'"value":' + token + '}'
+    const query = '{'+"'value':" +  "'"+ token + "'" + '}'
 
     const xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.onreadystatechange = function()
