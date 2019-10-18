@@ -32,7 +32,20 @@ app.post('/authentication', (req, res)=> {
     console.log(body)
     axios.post('http://localhost:5000/authentication', body)
     .then(function(response){
-        console.log(response.body)
+        const data = response['body']
+        if (data === 'Success'){
+            const info = 'You have successfully registered an account! Log in to get your flag'
+            res.send(info)
+        }
+        else if (data === 'Fail'){
+            const info = 'This code has already been redeemed \n Error: status = True'
+            res.send(id=text)
+        }
+        else{
+            console.log(data)
+            const info = 'Invalid format'
+            res.send("Error")
+        }
     })
 })
 app.listen(3030, ()=>{

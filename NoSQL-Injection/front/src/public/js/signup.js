@@ -13,7 +13,7 @@ function signup(){
         if( this.readyState == READYSTATE_COMPLETED
             && this.status == HTTP_STATUS_OK )
         {
-            console.log(this.responseText);
+            document.getElementById("text").innerHTML = this.responseText;
         }
     }
     xmlHttpRequest.open('POST', 'http://localhost:3030/authentication')
