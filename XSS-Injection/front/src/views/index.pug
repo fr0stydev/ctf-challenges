@@ -1,0 +1,14 @@
+html
+    head
+        title Welcome to hacked.com
+        link(
+            rel="stylesheet" 
+            href="css/materialize.css")
+    body    
+        h1 Send a comment to the admin!
+        form(action='/sendcomments', method='POST')
+            p
+                |   Comment:
+                input(type='text', id='comments' name='comments', value='')
+            input(class="btn waves-effect waves-light" value="Submit", type="submit")
+        
