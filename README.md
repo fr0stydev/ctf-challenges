@@ -1,4 +1,4 @@
-# This is a repository contains simple CTF-Challenges to improve newcomers pen-testing skills.
+# This is a repository containing simple CTF-Challenges to improve newcomers pen-testing skills.
 
 __Dedicated to training pen-testing/web-dev skills__
 

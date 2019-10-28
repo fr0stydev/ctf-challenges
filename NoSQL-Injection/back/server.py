@@ -39,10 +39,13 @@ def authentication():
     else:
         return 'None'
     
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> a6737f668852a50ecd57e3951466c38227e307f6
 
 
 
-if __name__ == "__main__":
+if name == "__main__":
     app.run(debug=True)
-
-
