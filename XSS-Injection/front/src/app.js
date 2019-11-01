@@ -1,7 +1,7 @@
 const express = require('express');
 //const axios = require('axios');
 const app = express();
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 var mysql = require('mysql')
 
@@ -33,16 +33,26 @@ app.get('/', (req, res) => {
 })
 
 app.post('/sendcomments', (req, res) => {
-    const comment = req.body.username
+    const comment = req.body.comments
     console.log(comment)
-    connection.connect(function(err){
-        console.log('connected!')
-        const sql = "INSERT INTO comments (comment) VALUES (" + comment + ")";
-        connection.query(sql, (err, results)=>{
-            console.log('comment inserted');
+        //const sql = "INSERT INTO comments(comment) VALUES (" + connection.escape(comment) + ")";
+        const sql = "INSERT INTO comments(comment) VALUES (?)"
+        connection.query(sql, [comments], (err, results)=>{
+            console.log(results);
         })
+        connection.end();
+        res.send('Comment Sent Successfully')
     })
-    
+
+
+app.get('/retrievecomments', (req, res) => {
+    const sql = "SELECT comment FROM comments"
+    connection.query(sql, (err, result, fields)=>{
+        if (err) throw err;
+        for (i=0; i<result.length;i++){
+            console.log(result[i])
+        }
+    })
 })
 
 app.listen(3030, ()=>{
