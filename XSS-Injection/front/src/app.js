@@ -1,5 +1,5 @@
 const express = require('express');
-//const axios = require('axios');
+const Browser = require('zombie');
 const app = express();
 const bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
@@ -37,24 +37,39 @@ app.post('/sendcomments', (req, res) => {
     console.log(comment)
         //const sql = "INSERT INTO comments(comment) VALUES (" + connection.escape(comment) + ")";
         const sql = "INSERT INTO comments(comment) VALUES (?)"
-        connection.query(sql, [comments], (err, results)=>{
+        connection.query(sql, [comment], (err, results)=>{
             console.log(results);
         })
-        connection.end();
         res.send('Comment Sent Successfully')
     })
 
 
 app.get('/retrievecomments', (req, res) => {
+    const obj = []
     const sql = "SELECT comment FROM comments"
     connection.query(sql, (err, result, fields)=>{
         if (err) throw err;
-        for (i=0; i<result.length;i++){
-            console.log(result[i])
+        for (var i = 0; i < result.length; i++){
+            obj.push({comment: result[i].comment})
         }
+        const data = []
+        for (var j = 0; j < obj.length; j++){
+            console.log(obj[j].comment)
+            data.push(obj[j].comment)
+        }
+        res.render('admin', {comment:data});
     })
 })
 
 app.listen(3030, ()=>{
     console.log("Listening on Port 3030")
+    setInterval(()=>{
+        const browser = new Browser()
+        browser.setCookie({name: 'session', domain: 'localhost', value:'flag{stol3ncooki3s}'})
+        browser.visit('http://localhost:3030/retrievecomments', ()=>{
+            const value = browser.getCookie('session')
+            console.log('Cookie: ', value)
+    })
+
+    }, 5000)
 })
