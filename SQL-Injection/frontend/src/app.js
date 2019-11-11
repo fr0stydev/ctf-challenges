@@ -19,9 +19,9 @@ app.use(cookieParser());
 
 //Set up MySQL Connection
 var connection = mysql.createConnection({
-    host     : 'localhost',
+    host     : 'sqldatabase',
     user     : 'root',
-    password : 'password',
+    password : 'hackerman06',
     database : 'sqlinject'
   });
 
