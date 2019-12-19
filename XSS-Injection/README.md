@@ -4,3 +4,4 @@ Hint: Are you really the only person checking this site?
 
 # Setup
 Build and run ```docker-compose up```
+Once built, go to ```localhost:3030```
