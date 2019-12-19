@@ -68,7 +68,6 @@ app.listen(3030, ()=>{
         browser.setCookie({name: 'session', domain: 'localhost', value:'flag{stol3ncooki3s}'})
         browser.visit('http://localhost:3030/retrievecomments', ()=>{
             const value = browser.getCookie('session')
-            console.log('Cookie: ', value)
     })
 
     }, 5000)
